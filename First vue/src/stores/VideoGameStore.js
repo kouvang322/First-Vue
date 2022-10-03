@@ -4,7 +4,7 @@ import {defineStore} from 'pinia'
 export const useVideoGameStore = defineStore('VideoGameStore', () => {
     const productGameList = ref([
         {
-            id: 1,
+            id: "item1",
             name: 'Overwatch', 
             price: 29.99,
             quantityInStock: 5,
@@ -13,7 +13,7 @@ export const useVideoGameStore = defineStore('VideoGameStore', () => {
         },
 
         {
-            id: 2,
+            id: "item2",
             name: 'Nioh 2', 
             price: 39.99,
             quantityInStock: 5,
@@ -22,7 +22,7 @@ export const useVideoGameStore = defineStore('VideoGameStore', () => {
         },
 
         {
-            id:3,
+            id:"item3",
             name: 'Gang Beasts', 
             price: 5.99,
             quantityInStock: 5,

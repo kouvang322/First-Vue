@@ -1,22 +1,14 @@
 <template>
-    <div>
-        <!-- {{ props.name }} -->
-
-        <!-- <img class="imgSize" :src="props.image"  /><br> -->
-        <!-- {{ props.price }}
-
-        {{ props.description }} -->
-
-        <div class="accordion" :id="props.id">
+    
+        
             <div class="accordion-item">
-                <h2 class="accordion-header" id="headingOne">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#collapseOne" aria-expanded="true">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" :data-bs-target="'#' + props.id">
                         <strong>{{ props.name }}</strong>
                     </button>
                 </h2>
-                <div id="collapseOne" class="accordion-collapse collapse show"
-                    data-bs-parent="#accordionGameList">
+                
+                <div :id="props.id" class="accordion-collapse collapse show">
                     <div class="accordion-body">
                         <div>
                             <img class="imgSize" :src="props.image" />
@@ -24,27 +16,23 @@
                                 {{ props.price }}
                                 {{ props.description }}
                             </strong>
-                            <!-- <button class="btn-primary" @click="vgStore.anyoneCanUse">Click Me</button> -->
+                            <button class="btn-primary" @click="vgStore.anyoneCanUse">Click Me</button>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-
         
-    </div>
 
 </template>
 
 <script setup>
 import { useVideoGameStore } from '../../stores/VideoGameStore';
-import { ref } from 'vue';
 
 const vgStore = useVideoGameStore();
 const props = defineProps(
     {
-        id:{
-            type: Number
+        id: {
+            type: String
         },
         name: {
             type: String
@@ -59,14 +47,7 @@ const props = defineProps(
             type: String
         }
     });
-    
-const gameIdRef = ref('#' + props.id);
 
-// function gameId(){
-//     return{
-//         uid: "No.-" + Math.floor(Math.random() * 10e16),
-//     }
-// }
 
 </script>
 
@@ -76,3 +57,5 @@ const gameIdRef = ref('#' + props.id);
     height: auto;
 }
 </style>
+
+

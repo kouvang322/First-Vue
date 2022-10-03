@@ -2,14 +2,13 @@
 <template>
     <div>
         <h2>List of Games</h2><br>
-        <div v-for="game in vgStore.productGameList" :key="game.id">
-            <VideoGameListItem 
-            :id="game.id"
-            :name="game.name" 
-            :price="game.price" 
-            :description="game.description"
-            :image="game.image">
-            </VideoGameListItem>
+
+        <div class="accordion" >
+            <div v-for="game in vgStore.productGameList" :key="game.id">
+                <VideoGameListItem :id="game.id" :name="game.name" :price="game.price" :description="game.description"
+                    :image="game.image">
+                </VideoGameListItem>
+            </div>
         </div>
         <!-- <button class="btn-primary" @click="vgStore.anyoneCanUse">Click me</button> -->
     </div>
