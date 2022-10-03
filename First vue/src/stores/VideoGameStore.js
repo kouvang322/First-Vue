@@ -27,7 +27,15 @@ export const useVideoGameStore = defineStore('VideoGameStore', () => {
             image:  'https://i5.walmartimages.com/asr/f5a79e42-13eb-4e63-b8f5-b7fb52664253.9d42c7efa35ea434a73424e4f9e050dc.jpeg'
         }
     ])
-    return {productGameList}
+
+
+ function anyoneCanUse(){
+    alert("any component can use pinia!!!!")
+ }
+
+
+    
+    return {productGameList, anyoneCanUse}
 
 })
 
