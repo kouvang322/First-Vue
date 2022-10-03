@@ -10,7 +10,10 @@
                 <button type="button" class="btn btn-danger" @click="vgStore.removeFromCart(index)">Remove Item</button>
             </li>
         </ul>
-
+        <div> Total Items: {{ vgStore.shoppingCartList.length }}</div>
+        <div v-for="item, index in vgStore.shoppingCartList" :key="item.price"> 
+            Total Cost: {{ item.price }}
+        </div>
     </div>
 
     </div>
