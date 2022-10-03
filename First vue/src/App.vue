@@ -1,49 +1,34 @@
 <template>
   <div>
+    <nav class="navbar navbar-expand-lg bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Games4You</a>
+        <div>
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <RouterLink class="nav-link" to="/">List of Games</RouterLink>
+            </li>
+            <li class="nav-item">
+              <RouterLink class="nav-link" to="/shoppingcart">Shopping Cart</RouterLink>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
 
-    <h2>List of Games</h2>
-    <!-- <ul v-for="game in vgStore.productGameList" :key="game.name">
-      <VideoGameListItem 
-        :name="game.name" 
-        :price="game.price" 
-        :description="game.description" 
-        :image="game.image">
-      </VideoGameListItem>
-    </ul>
-    <button @click="vgStore.anyoneCanUse">Click me</button> -->
+    <RouterView></RouterView>
 
-    <div class="accordion accordion-flush" id="accordionFlushExample">
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="flush-headingOne">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-        Accordion Item #1
-      </button>
-    </h2>
-    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-      <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+    <div class="card">
+      <div class="card-header">
+        Quote
+      </div>
+      <div class="card-body">
+        <blockquote class="blockquote mb-0">
+          <p>A well-known quote, contained in a blockquote element.</p>
+          <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
+        </blockquote>
+      </div>
     </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="flush-headingTwo">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-        Accordion Item #2
-      </button>
-    </h2>
-    <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-      <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the second item's accordion body. Let's imagine this being filled with some actual content.</div>
-    </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="flush-headingThree">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-        Accordion Item #3
-      </button>
-    </h2>
-    <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-      <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
-    </div>
-  </div>
-</div>
 
   </div>
 </template>
@@ -51,6 +36,7 @@
 
 
 <script setup>
+import { RouterLink, RouterView } from 'vue-router'
 import { useVideoGameStore } from './stores/VideoGameStore';
 import VideoGameListItem from './components/VideoGameComponents/VideoGameListItem.vue';
 
@@ -63,71 +49,135 @@ const vgStore = useVideoGameStore();
 
 
 <style scoped>
-.imgSize {
-  width: 250px;
-  height: auto;
+/* Global styles */
+.btn {
+  padding: 0.8rem 1rem 0.7rem;
+  border: 0.2rem solid #4d4d4d;
+  cursor: pointer;
+  text-transform: capitalize;
 }
 
-header {
-  line-height: 1.5;
-  max-height: 100vh;
+.btn__danger {
+  color: #fff;
+  background-color: #ca3c3c;
+  border-color: #bd2130;
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+.btn__filter {
+  border-color: lightgrey;
 }
 
-nav {
-  width: 100%;
-  font-size: 12px;
+.btn__danger:focus {
+  outline-color: #c82333;
+}
+
+.btn__primary {
+  color: #fff;
+  background-color: #000;
+}
+
+.btn-group {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn-group>* {
+  flex: 1 1 auto;
+}
+
+.btn-group>*+* {
+  margin-left: 0.8rem;
+}
+
+.label-wrapper {
+  margin: 0;
+  flex: 0 0 100%;
   text-align: center;
-  margin-top: 2rem;
 }
 
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
+[class*="__lg"] {
   display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
+  width: 100%;
+  font-size: 1.9rem;
 }
 
-nav a:first-of-type {
-  border: 0;
+[class*="__lg"]:not(:last-child) {
+  margin-bottom: 1rem;
 }
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
+@media screen and (min-width: 620px) {
+  [class*="__lg"] {
+    font-size: 2.4rem;
+  }
+}
+
+.visually-hidden {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap;
+}
+
+[class*="stack"]>* {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.stack-small>*+* {
+  margin-top: 1.25rem;
+}
+
+.stack-large>*+* {
+  margin-top: 2.5rem;
+}
+
+@media screen and (min-width: 550px) {
+  .stack-small>*+* {
+    margin-top: 1.4rem;
   }
 
-  .logo {
-    margin: 0 2rem 0 0;
+  .stack-large>*+* {
+    margin-top: 2.8rem;
   }
+}
 
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
+/* End global styles */
+#app {
+  background: #fff;
+  margin: 2rem 0 4rem 0;
+  padding: 1rem;
+  padding-top: 0;
+  position: relative;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 2.5rem 5rem 0 rgba(0, 0, 0, 0.1);
+}
+
+@media screen and (min-width: 550px) {
+  #app {
+    padding: 4rem;
   }
+}
 
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
+#app>* {
+  max-width: 50rem;
+  margin-left: auto;
+  margin-right: auto;
+}
 
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
+#app>form {
+  max-width: 100%;
+}
+
+#app h1 {
+  display: block;
+  min-width: 100%;
+  width: 100%;
+  text-align: center;
+  margin: 0;
+  margin-bottom: 1rem;
 }
 </style>
 
@@ -154,3 +204,16 @@ import HelloWorld from './components/HelloWorld.vue'
 
   <RouterView />
 </template> -->
+
+
+
+
+ <!-- <ul v-for="game in vgStore.productGameList" :key="game.name">
+      <VideoGameListItem 
+        :name="game.name" 
+        :price="game.price" 
+        :description="game.description" 
+        :image="game.image">
+      </VideoGameListItem>
+    </ul>
+    <button @click="vgStore.anyoneCanUse">Click me</button> -->
