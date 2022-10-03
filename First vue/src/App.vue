@@ -2,7 +2,7 @@
   <div>
     <nav class="navbar navbar-expand-lg bg-light">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">Games4You</a>
+        <a class="navbar-brand" href="#"><strong>Games4You</strong></a>
         <div>
           <ul class="navbar-nav">
             <li class="nav-item">
@@ -16,7 +16,7 @@
       </div>
     </nav>
 
-    <RouterView></RouterView>
+    <RouterView></RouterView><br>
 
     <div class="card">
       <div class="card-header">
