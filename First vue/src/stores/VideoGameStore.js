@@ -34,25 +34,20 @@ export const useVideoGameStore = defineStore('VideoGameStore', () => {
     const shoppingCartList = ref([])
 
 
-    function anyoneCanUse() {
-        alert("")
-
-    }
-
-    function addToCartList() {
+    function addToCartList(name, price) {
         shoppingCartList.value.push({
-            id: 'itemAdded1',
-            content: 'productGameList.value',
-            name: 'Overwatch',
-            price: 39.99,
+            name: name,
+            price: price,
         });
-        console.log(shoppingCartList.value[0]);
+        
+    }
+
+    function removeFromCart(index) {
+        shoppingCartList.value.splice(index, 1);
     }
 
 
-
-
-    return { productGameList, shoppingCartList, anyoneCanUse, addToCartList, }
+    return { productGameList, shoppingCartList, addToCartList, removeFromCart, }
 
 })
 

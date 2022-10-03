@@ -15,7 +15,7 @@
                         Price {{ props.price }}
                         {{ props.description }}
                     </strong>
-                    <br><button type="button" class="btn btn-primary" @click="vgStore.addToCartList">Add to
+                    <br><button type="button" class="btn btn-primary" @click="vgStore.addToCartList(props.name, props.price)">Add to
                         Cart</button>
                 </div>
             </div>

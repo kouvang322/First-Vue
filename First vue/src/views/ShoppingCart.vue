@@ -3,13 +3,13 @@
         <h2>Your Cart</h2><br>
 
     <div class="list-group">
-        <ul v-for="item in vgStore.shoppingCartList" :key="item.name">
-            <li>
-                {{item.name}}
-                {{item.price}}
+        <ul v-for="item, index in vgStore.shoppingCartList" :key="item.name">
+            <li class="list-group-item">
+                <br>{{item.name}}
+                <br>Price: {{item.price}}
+                <button type="button" class="btn btn-danger" @click="vgStore.removeFromCart(index)">Remove Item</button>
             </li>
         </ul>
-        
 
     </div>
 
