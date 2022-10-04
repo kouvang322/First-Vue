@@ -6,14 +6,18 @@
         <ul v-for="item, index in vgStore.shoppingCartList" :key="item.name">
             <li class="list-group-item">
                 <br>{{item.name}}
-                <br>Price: {{item.price}}
+                <br>Price: ${{item.price}}
                 <button type="button" class="btn btn-danger" @click="vgStore.removeFromCart(index)">Remove Item</button>
             </li>
         </ul>
-        <div> Total Items: {{ vgStore.shoppingCartList.length }}</div>
-        <div v-for="item, index in vgStore.shoppingCartList" :key="item.price"> 
+        <div>Total Items: {{ vgStore.shoppingCartList.length }}</div>
+        <div>Total Cost: ${{vgStore.totalCartCost}}</div>
+        
+        <!-- <div v-for="item, index in vgStore.shoppingCartList" :key="item.price"> 
             Total Cost: {{ item.price }}
-        </div>
+        </div> -->
+
+        <!-- maybe add a button to edit quantity, try have item show up only once, but have a count if there are more. Computed -->
     </div>
 
     </div>

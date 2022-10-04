@@ -33,6 +33,15 @@ export const useVideoGameStore = defineStore('VideoGameStore', () => {
 
     const shoppingCartList = ref([])
 
+    const totalCartCost = computed(() => shoppingCartList.value.reduce((sum, game) => sum + game.price, 0).toFixed(2))
+
+
+    // find the same objects in an array, count how many there are
+    // display object once, but also show how many objects are the same inside the list
+    // 
+
+    // const sum = [1, 2, 3].reduce((partialSum, a) => partialSum + a, 0);
+
 
     function addToCartList(name, price) {
         shoppingCartList.value.push({
@@ -47,9 +56,10 @@ export const useVideoGameStore = defineStore('VideoGameStore', () => {
     }
 
 
-    return { productGameList, shoppingCartList, addToCartList, removeFromCart, }
+    return { productGameList, shoppingCartList, addToCartList, removeFromCart, totalCartCost}
 
 })
 
 
-// {name: 'Hammer', qty: 1, purchased: true, category: 'need'},
+
+

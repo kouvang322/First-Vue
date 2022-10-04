@@ -6,7 +6,7 @@
                 <strong>{{ props.name }}</strong>
             </button>
         </h2>
-
+                <!-- find the data-bs-parent, define as a prop -->
         <div :id="props.id" class="accordion-collapse collapse">
             <div class="accordion-body">
                 <div>

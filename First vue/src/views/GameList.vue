@@ -2,13 +2,16 @@
 <template>
     <div>
         <h2>List of Games</h2><br>
-
+        <!--  add id, pass it in as a prop for vgli.vue -->
         <div class="accordion">
-            <div v-for="game in vgStore.productGameList" :key="game.id">
-                <VideoGameListItem :id="game.id" :name="game.name" :price="game.price" :description="game.description"
-                    :image="game.image">
-                </VideoGameListItem>
-            </div>
+            <VideoGameListItem v-for="game in vgStore.productGameList" 
+            :key="game.id" 
+            :id="game.id" 
+            :name="game.name"
+            :price="game.price" 
+            :description="game.description" 
+            :image="game.image">
+            </VideoGameListItem>
         </div>
         <!-- <button class="btn btn-primary" @click="vgStore.anyoneCanUse">Click me</button> -->
     </div>

@@ -9,7 +9,7 @@
               <RouterLink class="nav-link" to="/">List of Games</RouterLink>
             </li>
             <li class="nav-item">
-              <RouterLink class="nav-link" to="/shoppingcart">Shopping Cart</RouterLink>
+              <RouterLink class="nav-link" to="/shoppingcart">Shopping Cart - {{ vgStore.shoppingCartList.length }}</RouterLink>
             </li>
           </ul>
         </div>
@@ -19,7 +19,7 @@
     <RouterView></RouterView><br>
 
     <div class="container">
-  <footer class="py-3 my-4">
+  <footer class="py-3 my-4 bg-">
     <p class="text-center text-muted">© 2022 Games4You, Inc</p>
   </footer>
 </div>
