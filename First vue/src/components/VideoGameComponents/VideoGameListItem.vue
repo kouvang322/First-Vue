@@ -6,21 +6,24 @@
                 <strong>{{ props.name }}</strong>
             </button>
         </h2>
-                <!-- find the data-bs-parent, define as a prop -->
-        <div :id="props.id" class="accordion-collapse collapse">
+        
+        <div :id="props.id" class="accordion-collapse collapse" data-bs-parent="#videoGameAccordion">
             <div class="accordion-body">
-                <div>
+                <div class="d-flex">
                     <img class="imgSize" :src="props.image" /><br>
                     <strong>
-                        Price {{ props.price }}
-                        {{ props.description }}
+                        Price: ${{ props.price }}<br>
+                        Description: <br>{{ props.description }}
                     </strong>
-                    <br><button type="button" class="btn btn-primary" @click="vgStore.addToCartList(props.name, props.price)">Add to
-                        Cart</button>
+                    </div>
+                    <div class="d-flex" style="align-content:flex-end">
+                    <br><button type="button" class="btn btn-primary"
+                        @click="vgStore.addToCartList(props.name, props.price)">Add to Cart</button>
                 </div>
             </div>
         </div>
     </div>
+
 
 </template>
 

@@ -6,10 +6,11 @@
         <div>
           <ul class="navbar-nav">
             <li class="nav-item">
-              <RouterLink class="nav-link" to="/">List of Games</RouterLink>
+              <RouterLink class="nav-link" to="/">List of Games </RouterLink>
             </li>
             <li class="nav-item">
-              <RouterLink class="nav-link" to="/shoppingcart">Shopping Cart - {{ vgStore.shoppingCartList.length }}</RouterLink>
+              <RouterLink class="nav-link" to="/shoppingcart"> Shopping Cart - {{ vgStore.shoppingCartList.length }}
+              </RouterLink>
             </li>
           </ul>
         </div>
@@ -19,10 +20,10 @@
     <RouterView></RouterView><br>
 
     <div class="container">
-  <footer class="py-3 my-4 bg-">
-    <p class="text-center text-muted">© 2022 Games4You, Inc</p>
-  </footer>
-</div>
+      <footer class="py-3 my-4 bg-">
+        <p class="text-center text-muted">© 2022 Games4You, Inc</p>
+      </footer>
+    </div>
 
   </div>
 </template>
@@ -156,7 +157,7 @@ const vgStore = useVideoGameStore();
 }
 
 #app>* {
-  max-width: 50rem;
+  max-width: 60rem;
   margin-left: auto;
   margin-right: auto;
 }
@@ -174,40 +175,3 @@ const vgStore = useVideoGameStore();
   margin-bottom: 1rem;
 }
 </style>
-
-
-
-<!-- <script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
-<template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">Click here</RouterLink>
-      </nav>
-    </div>
-  </header>
-
-  <RouterView />
-</template> -->
-
-
-
-
- <!-- <ul v-for="game in vgStore.productGameList" :key="game.name">
-      <VideoGameListItem 
-        :name="game.name" 
-        :price="game.price" 
-        :description="game.description" 
-        :image="game.image">
-      </VideoGameListItem>
-    </ul>
-    <button @click="vgStore.anyoneCanUse">Click me</button> -->

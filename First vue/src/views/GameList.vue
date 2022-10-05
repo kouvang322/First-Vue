@@ -2,8 +2,8 @@
 <template>
     <div>
         <h2>List of Games</h2><br>
-        <!--  add id, pass it in as a prop for vgli.vue -->
-        <div class="accordion">
+        
+        <div class="accordion" id="videoGameAccordion">
             <VideoGameListItem v-for="game in vgStore.productGameList" 
             :key="game.id" 
             :id="game.id" 
@@ -13,7 +13,7 @@
             :image="game.image">
             </VideoGameListItem>
         </div>
-        <!-- <button class="btn btn-primary" @click="vgStore.anyoneCanUse">Click me</button> -->
+        
     </div>
 </template>
 
