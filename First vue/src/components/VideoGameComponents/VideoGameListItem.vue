@@ -9,16 +9,16 @@
         
         <div :id="props.id" class="accordion-collapse collapse" data-bs-parent="#videoGameAccordion">
             <div class="accordion-body">
-                <div class="d-flex">
+                <div class="d-flex justify-content-around align-items-center">
                     <img class="imgSize" :src="props.image" /><br>
                     <strong>
                         Price: ${{ props.price }}<br>
-                        Description: <br>{{ props.description }}
+                        <br>Description: <br>{{ props.description }}
                     </strong>
-                    </div>
-                    <div class="d-flex" style="align-content:flex-end">
+                </div>
+                <div class="d-flex justify-content-around align-items-center">
                     <br><button type="button" class="btn btn-primary"
-                        @click="vgStore.addToCartList(props.name, props.price)">Add to Cart</button>
+                        @click="vgStore.addToCartList(props.name, props.price, props.count)">Add to Cart</button>
                 </div>
             </div>
         </div>
@@ -40,6 +40,9 @@ const props = defineProps(
             type: String
         },
         price: {
+            type: Number
+        },
+        count: {
             type: Number
         },
         description: {

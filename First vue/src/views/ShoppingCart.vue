@@ -2,23 +2,29 @@
     <div>
         <h2>Your Cart</h2><br>
 
-    <div class="list-group">
-        <ul v-for="item, index in vgStore.shoppingCartList" :key="item.name">
-            <li class="list-group-item">
-                <br>{{item.name}}
-                <br>Price: ${{item.price}}
-                <button type="button" class="btn btn-danger" @click="vgStore.removeFromCart(index)">Remove Item</button>
-            </li>
-        </ul>
-        <div>Total Items: {{ vgStore.shoppingCartList.length }}</div>
-        <div>Total Cost: ${{vgStore.totalCartCost}}</div>
-        
-        <!-- <div v-for="item, index in vgStore.shoppingCartList" :key="item.price"> 
-            Total Cost: {{ item.price }}
-        </div> -->
+        <div class="list-group">
+            <ul v-for="item, index in vgStore.shoppingCartList" :key="item.name">
+                <li class="list-group-item">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                           Item: {{item.name}}
+                           <br>&nbsp;
+                        </div>
+                        <div>
+                            <br>Price: ${{item.price}}
+                            <br># of item(s) in cart: {{item.count}}
+                            <br><button type="button" class="btn btn-danger" @click="vgStore.removeFromCart(index)">Remove
+                            Item</button>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <div>Total Items: {{ vgStore.shoppingCartList.length }}</div>
+            <div>Total Cost: ${{vgStore.totalCartCost}}</div>
+            <br><button class="btn btn-primary">Confirm Purchase</button>
 
-        <!-- maybe add a button to edit quantity, try have item show up only once, but have a count if there are more. Computed -->
-    </div>
+            <!-- maybe add a button to edit quantity, try have item show up only once, but have a count if there are more. Computed -->
+        </div>
 
     </div>
 </template>

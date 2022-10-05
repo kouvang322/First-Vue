@@ -8,7 +8,8 @@
             :key="game.id" 
             :id="game.id" 
             :name="game.name"
-            :price="game.price" 
+            :price="game.price"
+            :count="game.count" 
             :description="game.description" 
             :image="game.image">
             </VideoGameListItem>

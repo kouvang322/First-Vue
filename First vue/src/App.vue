@@ -6,10 +6,10 @@
         <div>
           <ul class="navbar-nav">
             <li class="nav-item">
-              <RouterLink class="nav-link" to="/">List of Games </RouterLink>
+              <RouterLink class="nav-link view-link" to="/">List of Games </RouterLink>
             </li>
             <li class="nav-item">
-              <RouterLink class="nav-link" to="/shoppingcart"> Shopping Cart - {{ vgStore.shoppingCartList.length }}
+              <RouterLink class="nav-link view-link" to="/shoppingcart"> Shopping Cart - {{ vgStore.shoppingCartList.length }}
               </RouterLink>
             </li>
           </ul>
@@ -58,9 +58,6 @@ const vgStore = useVideoGameStore();
   border-color: #bd2130;
 }
 
-.btn__filter {
-  border-color: lightgrey;
-}
 
 .btn__danger:focus {
   outline-color: #c82333;
@@ -69,19 +66,6 @@ const vgStore = useVideoGameStore();
 .btn__primary {
   color: #fff;
   background-color: #000;
-}
-
-.btn-group {
-  display: flex;
-  justify-content: space-between;
-}
-
-.btn-group>* {
-  flex: 1 1 auto;
-}
-
-.btn-group>*+* {
-  margin-left: 0.8rem;
 }
 
 .label-wrapper {
@@ -173,5 +157,12 @@ const vgStore = useVideoGameStore();
   text-align: center;
   margin: 0;
   margin-bottom: 1rem;
+}
+
+.view-link{
+  text-decoration-line: underline;
+}
+.view-link:hover{
+  color: #000;
 }
 </style>
