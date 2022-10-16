@@ -4,20 +4,36 @@
       <div class="container-fluid">
         <a class="navbar-brand" href="#"><strong>Games4You</strong></a>
         <div>
-          <ul class="navbar-nav">
+          <!-- <ul class="navbar-nav">
             <li class="nav-item">
               <RouterLink class="nav-link view-link" to="/">List of Games </RouterLink>
             </li>
             <li class="nav-item">
-              <RouterLink class="nav-link view-link" to="/shoppingcart"> Shopping Cart - {{ vgStore.shoppingCartList.length }}
+              <RouterLink class="nav-link view-link" to="/shoppingcart"> Cart - {{ vgStore.shoppingCartList.length }}
               </RouterLink>
             </li>
-          </ul>
+          </ul> -->
+
+          <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
+            aria-controls="offcanvasExample"><font-awesome-icon icon="fa-solid fa-cart-shopping" />
+            Cart - {{ vgStore.shoppingCartList.length}}
+          </button>
         </div>
       </div>
     </nav>
 
-    <RouterView></RouterView><br>
+    <!-- <RouterView></RouterView><br> -->
+
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasExampleLabel"><strong>Cart</strong></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+       <ShoppingCart></ShoppingCart>
+      </div>
+    </div>
+    <GameList></GameList>
 
     <div class="container">
       <footer class="py-3 my-4 bg-">
@@ -34,6 +50,8 @@
 import { RouterLink, RouterView } from 'vue-router'
 import { useVideoGameStore } from './stores/VideoGameStore';
 import VideoGameListItem from './components/VideoGameComponents/VideoGameListItem.vue';
+import GameList from './views/GameList.vue';
+import ShoppingCart from './views/ShoppingCart.vue'; 
 
 
 
@@ -159,10 +177,11 @@ const vgStore = useVideoGameStore();
   margin-bottom: 1rem;
 }
 
-.view-link{
+.view-link {
   text-decoration-line: underline;
 }
-.view-link:hover{
+
+.view-link:hover {
   color: #000;
 }
 </style>

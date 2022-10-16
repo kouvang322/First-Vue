@@ -2,19 +2,18 @@
 <template>
     <div>
         <h2>List of Games</h2><br>
-        
-        <div class="accordion" id="videoGameAccordion">
+        <!-- <div class="accordion" id="videoGameAccordion"> -->
             <VideoGameListItem v-for="game in vgStore.productGameList" 
             :key="game.id" 
             :id="game.id" 
             :name="game.name"
-            :price="game.price"
+            :price="game.price" 
             :count="game.count" 
-            :description="game.description" 
+            :genre="game.genre" 
+            :description="game.description"
             :image="game.image">
             </VideoGameListItem>
-        </div>
-        
+        <!-- </div> -->
     </div>
 </template>
 

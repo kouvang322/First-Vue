@@ -1,31 +1,20 @@
 <template>
     <div>
-        <h2>Your Cart</h2><br>
-
         <div class="list-group">
-            <ul v-for="item, index in vgStore.shoppingCartList" :key="item.name">
-                <li class="list-group-item">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div>
-                           Item: {{item.name}}
-                           <br>&nbsp;
-                        </div>
-                        <div>
-                            <br>Price: ${{item.price}}
-                            <br># of item(s) in cart: {{item.count}}
-                            <br><button type="button" class="btn btn-danger" @click="vgStore.removeFromCart(index)">Remove
-                            Item</button>
-                        </div>
-                    </div>
-                </li>
+            <ul>
+                <ShoppingCartItems v-for="item in vgStore.shoppingCartList" 
+                :key="item.name"
+                :name="item.name"
+                :price="item.price"
+                :count="item.count"
+                ></ShoppingCartItems>
             </ul>
             <div>Total Items: {{ vgStore.shoppingCartList.length }}</div>
             <div>Total Cost: ${{vgStore.totalCartCost}}</div>
-            <br><button class="btn btn-primary">Confirm Purchase</button>
+            <br><button class="btn btn-primary" @click="clickForAlert">Confirm Purchase</button>
 
             <!-- maybe add a button to edit quantity, try have item show up only once, but have a count if there are more. Computed -->
         </div>
-
     </div>
 </template>
 
@@ -33,9 +22,15 @@
 import "bootstrap/dist/css/bootstrap.css"
 import { useVideoGameStore } from '../stores/VideoGameStore';
 import VideoGameListItem from '../components/VideoGameComponents/VideoGameListItem.vue';
-
+import CustomModal from '../components/CustomModal.vue';
+import ShoppingCartItems from '../components/VideoGameComponents/ShoppingCartItems.vue';
 
 const vgStore = useVideoGameStore();
+
+function clickForAlert() {
+    alert("purchase complete");
+}
+
 </script>
 
 <style scoped>
