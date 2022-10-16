@@ -12,26 +12,32 @@
                     Item</button>
 
                 <button class="btn btn-danger" data-bs-toggle="modal" :data-bs-target="'#' + cartItemProps.id">test</button>
+
             </div>
         </div>
         <CustomModal 
         :id="cartItemProps.id" 
-        :name="cartItemProps.name" 
+        :name="cartItemProps.name"
         :description="cartItemProps.description" 
-        :is-remove-item-modal=false
-        :is-description-modal=true
+        :is-description-modal=false
+        :is-remove-item-modal=true
         ></CustomModal>
     </li>
 </template>
 
 <script setup>
 import { useVideoGameStore } from '../../stores/VideoGameStore';
+import CustomModal from '../CustomModal.vue';
 
 
 const vgStore = useVideoGameStore();
 
 const cartItemProps = defineProps(
     {
+
+        id:{
+            type: String
+        },          
         name: {
             type: String
         },

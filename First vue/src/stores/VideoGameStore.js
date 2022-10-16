@@ -50,14 +50,14 @@ export const useVideoGameStore = defineStore('VideoGameStore', () => {
             price: price,
             count: count,
         });
+        console.log(shoppingCartList.value);
     }
 
     function removeFromCart(index) {
         shoppingCartList.value.splice(index, 1);
     }
 
-
-    return { productGameList, shoppingCartList, addToCartList, removeFromCart, totalCartCost }
+    return { productGameList, shoppingCartList, addToCartList, removeFromCart, totalCartCost,}
 
 })
 

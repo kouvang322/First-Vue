@@ -4,6 +4,7 @@
             <ul>
                 <ShoppingCartItems v-for="item in vgStore.shoppingCartList" 
                 :key="item.name"
+                :id="item.id"
                 :name="item.name"
                 :price="item.price"
                 :count="item.count"
