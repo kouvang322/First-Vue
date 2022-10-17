@@ -2,19 +2,19 @@
     <div>
         <div class="list-group">
             <ul>
-                <ShoppingCartItems v-for="item in vgStore.shoppingCartList" 
+                <shopping-cart-items v-for="item in vgStore.shoppingCartList" 
                 :key="item.name"
                 :id="item.id"
                 :name="item.name"
                 :price="item.price"
-                :count="item.count"
-                ></ShoppingCartItems>
+                :qty="item.qty"
+                ></shopping-cart-items>
             </ul>
-            <div>Total Items: {{ vgStore.shoppingCartList.length }}</div>
-            <div>Total Cost: ${{vgStore.totalCartCost}}</div>
+            <div>Items: {{ vgStore.totalItemsInCart }}</div>
+            <div>Total: ${{vgStore.totalCartCost}}</div>
             <br><button class="btn btn-primary" @click="clickForAlert">Confirm Purchase</button>
 
-            <!-- maybe add a button to edit quantity, try have item show up only once, but have a count if there are more. Computed -->
+            <!-- maybe add a button to edit quantity, try have item show up only once, but have a qty if there are more. Computed -->
         </div>
     </div>
 </template>
@@ -29,7 +29,7 @@ import ShoppingCartItems from '../components/VideoGameComponents/ShoppingCartIte
 const vgStore = useVideoGameStore();
 
 function clickForAlert() {
-    alert("purchase complete");
+    alert("Purchase Complete");
 }
 
 </script>

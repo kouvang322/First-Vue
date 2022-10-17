@@ -5,23 +5,24 @@
             <div class="d-flex justify-content-around align-items-center mt-3">
                 <img class="imgSize clickable" :src="props.image" data-bs-toggle="modal"
                     :data-bs-target="'#' + props.id">
-                <!-- @click="showGameDesc" -->
+
                 ${{ props.price }}
                 <br>{{ props.genre }}
 
             </div>
             <div class="d-flex justify-content-around align-items-center">
                 <br><button type="button" class="btn btn-primary"
-                    @click="vgStore.addToCartList(props.id, props.name, props.price, props.count)">Add to Cart</button>
+                    @click="vgStore.addToCartList(props.id, props.name, props.price, props.qty)">Add to
+                    Cart</button>
             </div><br>
             <!-- Item info modal -->
-            <CustomModal 
-            :id="props.id"
-            :name="props.name"
-            :description="props.description"
-            :is-description-modal = true
-            :is-remove-item-modal = false>
-            </CustomModal>
+            <custom-modal 
+            :id="props.id" 
+            :name="props.name" 
+            :description="props.description" 
+            :is-description-modal=true
+            :is-remove-item-modal=false>
+            </custom-modal>
         </div>
     </div>
 
@@ -32,6 +33,7 @@ import { useVideoGameStore } from '../../stores/VideoGameStore';
 import CustomModal from '../CustomModal.vue';
 
 const vgStore = useVideoGameStore();
+
 const props = defineProps(
     {
         id: {
@@ -43,7 +45,7 @@ const props = defineProps(
         price: {
             type: Number
         },
-        count: {
+        qty: {
             type: Number
         },
         genre: {
@@ -56,6 +58,7 @@ const props = defineProps(
             type: String
         }
     });
+
 
 </script>
 

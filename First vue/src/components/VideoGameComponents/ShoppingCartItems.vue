@@ -7,21 +7,22 @@
             </div>
             <div>
                 <br>${{cartItemProps.price}}
-                <br>Qty: {{cartItemProps.count}}
-                <br><button type="button" class="btn btn-danger" @click="vgStore.removeFromCart(index)">Remove
-                    Item</button>
-
-                <button class="btn btn-danger" data-bs-toggle="modal" :data-bs-target="'#' + cartItemProps.id">test</button>
+                <br>Qty: {{cartItemProps.qty}}
+                <br>
+                <button button type="button" class="btn btn-danger" 
+                data-bs-toggle="modal" 
+                :data-bs-target="'#' + cartItemProps.id"
+                >Remove Item</button>
 
             </div>
         </div>
-        <CustomModal 
+        <custom-modal 
         :id="cartItemProps.id" 
         :name="cartItemProps.name"
         :description="cartItemProps.description" 
         :is-description-modal=false
         :is-remove-item-modal=true
-        ></CustomModal>
+        ></custom-modal>
     </li>
 </template>
 
@@ -44,7 +45,7 @@ const cartItemProps = defineProps(
         price: {
             type: Number
         },
-        count:{
+        qty:{
             type: Number
         },
 

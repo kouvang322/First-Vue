@@ -16,7 +16,7 @@
 
           <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
             aria-controls="offcanvasExample"><font-awesome-icon icon="fa-solid fa-cart-shopping" />
-            Cart - {{ vgStore.shoppingCartList.length}}
+            - {{ vgStore.totalItemsInCart}}
           </button>
         </div>
       </div>
@@ -26,7 +26,7 @@
 
     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
       <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasExampleLabel"><strong>Cart</strong></h5>
+        <h5 class="offcanvas-title" id="offcanvasExampleLabel"><strong>Your Cart</strong></h5>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div class="offcanvas-body">

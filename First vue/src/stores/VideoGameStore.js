@@ -8,9 +8,9 @@ export const useVideoGameStore = defineStore('VideoGameStore', () => {
             id: "item1",
             name: 'Overwatch',
             price: 29.99,
-            count: 1,
-            genre: 'Multiplayer, Shooter',
-            description: 'Multiplayer, Shooter',
+            qty: 1,
+            genre: 'Multiplayer, First-person Shooter',
+            description: 'Overwatch is a first-person multiplayer shooter, set in a future where a conflict between robots and humanity necessitated the creation of a task force, conveniently called "Overwatch."',
             image: 'https://i5.walmartimages.com/asr/ef508770-a89f-45bf-8c4d-4a9b226e789c.88ac656b3d0bd089b2fb2cb686ed9d66.jpeg'
         },
 
@@ -18,9 +18,9 @@ export const useVideoGameStore = defineStore('VideoGameStore', () => {
             id: "item2",
             name: 'Nioh 2',
             price: 39.99,
-            count: 1,
-            genre: 'Action, Adventure',
-            description: 'Action, Adventure',
+            qty: 1,
+            genre: 'Action role-playing, Adventure',
+            description: 'Play as a mysterious half-human, half-supernatural Yokai warrior and master the lethal arts of the samurai. This challenging action role-playing game sequel explores the violent Japan Sengoku-era and the deadly Dark Realm.',
             image: 'https://i5.walmartimages.com/asr/d30f5683-a381-4126-963c-383a4200eb82_2.5fd853a0a0f50bdd9b9f8ee640a6edfd.jpeg'
         },
 
@@ -28,36 +28,59 @@ export const useVideoGameStore = defineStore('VideoGameStore', () => {
             id: "item3",
             name: 'Gang Beasts',
             price: 5.99,
-            count: 1,
-            genre: 'Multiplayer, Party, Fighting',
-            description: 'Multiplayer, Party, Fighting',
+            qty: 1,
+            genre: 'Multiplayer, Party, Fighting, Action',
+            description: 'Gang Beasts is a silly multiplayer party game with surly gelatinous characters, brutal slapstick fight sequences, and absurd hazardous environments, set in the mean streets of Beef City.',
             image: 'https://i5.walmartimages.com/asr/f5a79e42-13eb-4e63-b8f5-b7fb52664253.9d42c7efa35ea434a73424e4f9e050dc.jpeg'
         }
     ])
 
     const shoppingCartList = ref([])
 
-    const totalCartCost = computed(() => shoppingCartList.value.reduce((sum, game) => sum + game.price, 0).toFixed(2))
+    const totalCartCost = computed(() => shoppingCartList.value.reduce((sum, game) => sum + (game.price * game.qty), 0).toFixed(2))
+
+    const totalItemsInCart = computed(() => shoppingCartList.value.reduce((sum, game) => sum + game.qty, 0))
 
 
-    // find the same objects in an array, count how many there are
-    // display object once, but update the number of the same object when adding more 
-
-    function addToCartList(id,name, price, count) {
-        shoppingCartList.value.push({
-            id: id,
-            name: name,
-            price: price,
-            count: count,
-        });
-        console.log(shoppingCartList.value);
+    // loop over list to find the index of the item if it is in the list
+    // return number "i" item exists otherwise return null
+    function findIndexInList(id){
+        for(var i = 0; i < shoppingCartList.value.length; i++){
+            if (shoppingCartList.value[i].id === id){
+                return i;
+            }
+        }
+        return null;
     }
+
+    // adding item when add item button is clicked
+    function addToCartList(id,name, price, qty) {
+        
+        // set 
+        var itemIndex = findIndexInList(id);
+        
+        if(itemIndex != null){
+            shoppingCartList.value[itemIndex].qty++
+        }else{
+            shoppingCartList.value.push({
+                id: id,
+                name: name,
+                price: price,
+                qty: qty,
+            });  
+        }
+
+        alert(name + " was added to cart");
+    }
+
+
+
 
     function removeFromCart(index) {
         shoppingCartList.value.splice(index, 1);
     }
 
-    return { productGameList, shoppingCartList, addToCartList, removeFromCart, totalCartCost,}
+    return { productGameList, shoppingCartList, addToCartList, removeFromCart, totalCartCost, totalItemsInCart}
 
 })
 

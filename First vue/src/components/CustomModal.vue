@@ -19,7 +19,6 @@
             </div>
         </div>
 
-
         <div v-if="gameProps.isRemoveItemModal" class="modal fade" :id="gameProps.id" data-bs-backdrop="false"
             data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -32,8 +31,8 @@
                         Remove "{{ gameProps.name}}" from the cart?
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-danger" data-bs-dismiss="modal">Remove Item</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-danger" data-bs-dismiss="modal" @click="vgStore.removeFromCart(index)">Remove Item</button>
                     </div>
                 </div>
             </div>
@@ -42,6 +41,9 @@
 </template>
 
 <script setup>
+import { useVideoGameStore } from "../stores/VideoGameStore"
+
+const vgStore = useVideoGameStore();
 
 const gameProps = defineProps(
     {
@@ -51,10 +53,19 @@ const gameProps = defineProps(
         name: {
             type: String
         },
+        price: {
+            type: Number
+        },
+        qty: {
+            type: Number
+        },
         description: {
             type: String
         },
         isDescriptionModal: {
+            type: Boolean
+        },
+        isAddItemModal: {
             type: Boolean
         },
         isRemoveItemModal: {
