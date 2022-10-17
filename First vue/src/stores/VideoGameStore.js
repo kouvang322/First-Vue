@@ -73,11 +73,9 @@ export const useVideoGameStore = defineStore('VideoGameStore', () => {
         alert(name + " was added to cart");
     }
 
-
-
-
-    function removeFromCart(index) {
-        shoppingCartList.value.splice(index, 1);
+    function removeFromCart(id) {
+        var itemIndex = findIndexInList(id);
+        shoppingCartList.value.splice(itemIndex, 1);
     }
 
     return { productGameList, shoppingCartList, addToCartList, removeFromCart, totalCartCost, totalItemsInCart}

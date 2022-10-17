@@ -32,7 +32,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-danger" data-bs-dismiss="modal" @click="vgStore.removeFromCart(index)">Remove Item</button>
+                        <button type="submit" class="btn btn-danger" data-bs-dismiss="modal" @click="vgStore.removeFromCart(gameProps.id)">Remove Item</button>
                     </div>
                 </div>
             </div>
