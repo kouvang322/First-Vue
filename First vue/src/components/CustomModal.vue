@@ -1,16 +1,16 @@
 <template>
     <!-- Modal -->
     <div>
-        <div v-if="gameProps.isDescriptionModal" class="modal fade" :id="gameProps.id" data-bs-backdrop="static"
+        <div v-if="itemProps.isDescriptionModal" class="modal fade" :id="itemProps.id" data-bs-backdrop="static"
             data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="staticBackdropLabel"><strong>{{gameProps.name}}</strong></h1>
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel"><strong>{{itemProps.name}}</strong></h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        {{gameProps.description}}
+                        {{itemProps.description}}
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -19,7 +19,7 @@
             </div>
         </div>
 
-        <div v-if="gameProps.isRemoveItemModal" class="modal fade" :id="gameProps.id" data-bs-backdrop="false"
+        <div v-if="itemProps.isRemoveItemModal" class="modal fade" :id="itemProps.id" data-bs-backdrop="false"
             data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -28,11 +28,11 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        Remove "{{ gameProps.name}}" from the cart?
+                        Remove "{{ itemProps.name}}" from the cart?
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-danger" data-bs-dismiss="modal" @click="vgStore.removeFromCart(gameProps.id)">Remove Item</button>
+                        <button type="submit" class="btn btn-danger" data-bs-dismiss="modal" @click="vgStore.removeFromCart(itemProps.id)">Remove Item</button>
                     </div>
                 </div>
             </div>
@@ -45,7 +45,7 @@ import { useVideoGameStore } from "../stores/VideoGameStore"
 
 const vgStore = useVideoGameStore();
 
-const gameProps = defineProps(
+const itemProps = defineProps(
     {
         id: {
             type: String

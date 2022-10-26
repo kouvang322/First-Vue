@@ -33,7 +33,7 @@
        <ShoppingCart></ShoppingCart>
       </div>
     </div>
-    <GameList></GameList>
+    <ProductList></ProductList>
 
     <div class="container">
       <footer class="py-3 my-4 bg-">
@@ -49,8 +49,8 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import { useVideoGameStore } from './stores/VideoGameStore';
-import VideoGameListItem from './components/VideoGameComponents/VideoGameListItem.vue';
-import GameList from './views/GameList.vue';
+import ProductListItem from './components/ProductListItem.vue';
+import ProductList from './views/ProductList.vue';
 import ShoppingCart from './views/ShoppingCart.vue'; 
 
 

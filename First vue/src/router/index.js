@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import GameList from '../views/GameList.vue'
+import ProductList from '../views/ProductList.vue'
 import ShoppingCart from '../views/ShoppingCart.vue'
 
 const router = createRouter({
@@ -24,8 +24,8 @@ const router = createRouter({
     },
     {
       path: '/',
-      name: 'GameList',
-      component: GameList
+      name: 'ProductList',
+      component: ProductList
     },
 
     

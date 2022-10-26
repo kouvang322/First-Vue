@@ -1,52 +1,52 @@
 import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
-
+import Game from '../models/GameModel'
+import Accessory from '../models/AccessoryModel'
 
 export const useVideoGameStore = defineStore('VideoGameStore', () => {
     const productGameList = ref([
-        {
-            id: "item1",
-            name: 'Overwatch',
-            price: 29.99,
-            qty: 1,
-            genre: 'Multiplayer, First-person Shooter',
-            description: 'Overwatch is a first-person multiplayer shooter, set in a future where a conflict between robots and humanity necessitated the creation of a task force, conveniently called "Overwatch."',
-            image: 'https://i5.walmartimages.com/asr/ef508770-a89f-45bf-8c4d-4a9b226e789c.88ac656b3d0bd089b2fb2cb686ed9d66.jpeg'
-        },
-
-        {
-            id: "item2",
-            name: 'Nioh 2',
-            price: 39.99,
-            qty: 1,
-            genre: 'Action role-playing, Adventure',
-            description: 'Play as a mysterious half-human, half-supernatural Yokai warrior and master the lethal arts of the samurai. This challenging action role-playing game sequel explores the violent Japan Sengoku-era and the deadly Dark Realm.',
-            image: 'https://i5.walmartimages.com/asr/d30f5683-a381-4126-963c-383a4200eb82_2.5fd853a0a0f50bdd9b9f8ee640a6edfd.jpeg'
-        },
-
-        {
-            id: "item3",
-            name: 'Gang Beasts',
-            price: 5.99,
-            qty: 1,
-            genre: 'Multiplayer, Party, Fighting, Action',
-            description: 'Gang Beasts is a silly multiplayer party game with surly gelatinous characters, brutal slapstick fight sequences, and absurd hazardous environments, set in the mean streets of Beef City.',
-            image: 'https://i5.walmartimages.com/asr/f5a79e42-13eb-4e63-b8f5-b7fb52664253.9d42c7efa35ea434a73424e4f9e050dc.jpeg'
-        }
+        new Game(
+            'item1', 
+            'Overwatch', 
+            29.99, 
+            1, 
+            'Multiplayer, First-person Shooter', 
+            'Overwatch is a first-person multiplayer shooter, set in a future where a conflict between robots and humanity necessitated the creation of a task force, conveniently called "Overwatch."',
+            'https://i5.walmartimages.com/asr/ef508770-a89f-45bf-8c4d-4a9b226e789c.88ac656b3d0bd089b2fb2cb686ed9d66.jpeg'
+        ),
+        new Game(
+            'item2',
+            'Nioh 2',
+            39.99,
+            1,
+            'Action role-playing, Adventure',
+            'Play as a mysterious half-human, half-supernatural Yokai warrior and master the lethal arts of the samurai. This challenging action role-playing game sequel explores the violent Japan Sengoku-era and the deadly Dark Realm.',
+            'https://i5.walmartimages.com/asr/d30f5683-a381-4126-963c-383a4200eb82_2.5fd853a0a0f50bdd9b9f8ee640a6edfd.jpeg'
+            
+        ),
+        new Accessory(
+            'item3',
+            'PS4 Controller',
+            59.99,
+            1,
+            'Black',
+            'Experience the power of gaming at your fingertips. The Sony DualShock 4 Wireless Controller for PlayStation 4 enhances your gaming experience. With revolutionary features and comfort with intuitive, precision controls you can fully experience your favorite video games. The analog sticks and trigger buttons deliver greater response and sensitivity along with a multi touch pad for a more natural gameplay.',
+            'https://i5.walmartimages.com/asr/f317ff93-77d6-4bc8-9319-6a2cbd7cac72.bcc5d6636ae0847b590bbbe39fe3f6a3.jpeg?odnHeight=784&odnWidth=580&odnBg=FFFFFF'
+        ) 
     ])
 
     const shoppingCartList = ref([])
 
-    const totalCartCost = computed(() => shoppingCartList.value.reduce((sum, game) => sum + (game.price * game.qty), 0).toFixed(2))
+    const totalCartCost = computed(() => shoppingCartList.value.reduce((sum, item) => sum + (item.price * item.qty), 0).toFixed(2))
 
-    const totalItemsInCart = computed(() => shoppingCartList.value.reduce((sum, game) => sum + game.qty, 0))
+    const totalItemsInCart = computed(() => shoppingCartList.value.reduce((sum, item) => sum + item.qty, 0))
 
 
-    // loop over list to find the index of the item if it is in the list
+    // loop over list to find the index of the item using their id if it is in the list
     // return number "i" item exists otherwise return null
-    function findIndexInList(id){
-        for(var i = 0; i < shoppingCartList.value.length; i++){
-            if (shoppingCartList.value[i].id === id){
+    function findIndexInList(id) {
+        for (var i = 0; i < shoppingCartList.value.length; i++) {
+            if (shoppingCartList.value[i].id === id) {
                 return i;
             }
         }
@@ -54,31 +54,32 @@ export const useVideoGameStore = defineStore('VideoGameStore', () => {
     }
 
     // adding item when add item button is clicked
-    function addToCartList(id,name, price, qty) {
-        
+    function addToCartList(id, name, price, qty) {
+
         // set 
         var itemIndex = findIndexInList(id);
-        
-        if(itemIndex != null){
-            shoppingCartList.value[itemIndex].qty++
-        }else{
+
+        if (itemIndex != null) {
+            shoppingCartList.value[itemIndex].qty++;
+        } else {
             shoppingCartList.value.push({
                 id: id,
                 name: name,
                 price: price,
                 qty: qty,
-            });  
+            });
         }
 
         alert(name + " was added to cart");
     }
 
     function removeFromCart(id) {
+        // find the index of where the item id is, then remove the correct item
         var itemIndex = findIndexInList(id);
         shoppingCartList.value.splice(itemIndex, 1);
     }
 
-    return { productGameList, shoppingCartList, addToCartList, removeFromCart, totalCartCost, totalItemsInCart}
+    return { productGameList, shoppingCartList, addToCartList, removeFromCart, totalCartCost, totalItemsInCart }
 
 })
 

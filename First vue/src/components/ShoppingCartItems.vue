@@ -27,15 +27,14 @@
 </template>
 
 <script setup>
-import { useVideoGameStore } from '../../stores/VideoGameStore';
-import CustomModal from '../CustomModal.vue';
+import { useVideoGameStore } from '../stores/VideoGameStore';
+import CustomModal from './CustomModal.vue';
 
 
 const vgStore = useVideoGameStore();
 
 const cartItemProps = defineProps(
     {
-
         id:{
             type: String
         },          
@@ -48,7 +47,6 @@ const cartItemProps = defineProps(
         qty:{
             type: Number
         },
-
     });
 
 

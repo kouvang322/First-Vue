@@ -6,8 +6,10 @@
                 <img class="imgSize clickable" :src="props.image" data-bs-toggle="modal"
                     :data-bs-target="'#' + props.id">
 
-                ${{ props.price }}
-                <br>{{ props.genre }}
+                <p v-if="props.genre">${{ props.price }}<br>
+                {{ props.genre }}</p>
+                <p v-if="props.color">${{ props.price }}<br>
+                Color: {{ props.color }}</p>
 
             </div>
             <div class="d-flex justify-content-around align-items-center">
@@ -29,12 +31,15 @@
 </template>
 
 <script setup>
-import { useVideoGameStore } from '../../stores/VideoGameStore';
-import CustomModal from '../CustomModal.vue';
+import Game from '../models/GameModel';
+import ProductItem from '../models/ProductItemModel';
+import { useVideoGameStore } from '../stores/VideoGameStore';
+import CustomModal from './CustomModal.vue';
 
 const vgStore = useVideoGameStore();
 
 const props = defineProps(
+
     {
         id: {
             type: String
@@ -49,6 +54,9 @@ const props = defineProps(
             type: Number
         },
         genre: {
+            type: String
+        },
+        color : {
             type: String
         },
         description: {
