@@ -13,14 +13,17 @@
             :description="item.description"
             :image="item.image">
             </product-list-item>
-       
+    <!-- <div v-for="item in vgStore.productGameList" :key="item.id">
+        <product-list-item :item="item"></product-list-item>
+    </div> -->
     </div>
 </template>
 
 <script setup>
-import "bootstrap/dist/css/bootstrap.css"
 import { useVideoGameStore } from '../stores/VideoGameStore';
 import ProductListItem from "../components/ProductListItem.vue";
+
+// components = {ProductListItem}
 
 
 const vgStore = useVideoGameStore();

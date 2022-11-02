@@ -16,7 +16,7 @@
 
             </div>
         </div>
-        <custom-modal 
+        <custom-modal
         :id="cartItemProps.id" 
         :name="cartItemProps.name"
         :description="cartItemProps.description" 

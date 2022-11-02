@@ -32,7 +32,7 @@ export const useVideoGameStore = defineStore('VideoGameStore', () => {
             'Black',
             'Experience the power of gaming at your fingertips. The Sony DualShock 4 Wireless Controller for PlayStation 4 enhances your gaming experience. With revolutionary features and comfort with intuitive, precision controls you can fully experience your favorite video games. The analog sticks and trigger buttons deliver greater response and sensitivity along with a multi touch pad for a more natural gameplay.',
             'https://i5.walmartimages.com/asr/f317ff93-77d6-4bc8-9319-6a2cbd7cac72.bcc5d6636ae0847b590bbbe39fe3f6a3.jpeg?odnHeight=784&odnWidth=580&odnBg=FFFFFF'
-        ) 
+        ), 
     ])
 
     const shoppingCartList = ref([])
